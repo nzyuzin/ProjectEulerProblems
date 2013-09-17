@@ -18,8 +18,8 @@ func main() {
                         number /= 2
                 }
         }
-        for  i := int64(3); i < int64(math.Sqrt(float64(number))); i += 2 {
-                if number % i == 0 && isPrime(i) {
+        for  i := int64(3); i <= int64(math.Sqrt(float64(number))); i += 2 {
+                if number % i == 0 {
                         maxDivisor = i
                         for number % i == 0 {
                                 number /= i
@@ -30,13 +30,4 @@ func main() {
                 maxDivisor = number
         }
         println(maxDivisor)
-}
-
-func isPrime(number int64) bool {
-        for i := int64(2); i < int64(math.Sqrt(float64(number))); i++ {
-                if number % i == 0 {
-                        return false
-                }
-        }
-        return true
 }
