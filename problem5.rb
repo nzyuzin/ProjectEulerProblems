@@ -5,7 +5,6 @@
 $TEST_ANSWER
 
 def answer(number)
-  require 'set'
   factors = Hash.new
   2.upto(number) do |i|
     factors_of(i).each do |pair|
