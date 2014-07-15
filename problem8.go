@@ -12,20 +12,16 @@ import (
 
 func main() {
         data, _ := ioutil.ReadFile("problem8")
-        seq := data[:5]
         maxProduct := 1
-        var maxSequence []byte
         for i := 0; i < len(data) - 5; i++ {
                 product := 1
-                for _, x := range seq {
+                for _, x := range data[i:i+5] {
                         x, _ := strconv.Atoi(string(x))
                         product = product * int(x)
                 }
                 if product > maxProduct {
                         maxProduct = product
-                        maxSequence = seq
                 }
-                seq = data[i:i+5]
         }
-        fmt.Printf("The biggest product is: %v\n And the biggest sequence is: %v\n", maxProduct, string(maxSequence))
+        fmt.Printf("%v\n", maxProduct)
 }
