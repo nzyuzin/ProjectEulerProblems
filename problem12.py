@@ -24,7 +24,7 @@ import unittest
 
 from math import sqrt
 
-def divisors(number):
+def factors_of(number):
     result = []
     sqrt_of_number = int(sqrt(number))
     for i in range(1, sqrt_of_number):
@@ -39,15 +39,15 @@ def triangle(number):
 
 def answer(max_divisors):
     number = 1
-    while len(divisors(triangle(number))) < max_divisors:
+    while len(factors_of(triangle(number))) < max_divisors:
         number += 1
     return triangle(number)
 
 class DivisorsTestCase(unittest.TestCase):
     def runTest(self):
-        self.assertEqual(set([1, 2, 4, 7, 14, 28]), set(divisors(28)),
+        self.assertEqual(set([1, 2, 4, 7, 14, 28]), set(factors_of(28)),
                 'Divisors are calculated incorrectly')
-        self.assertEqual(set([1, 3, 9]), set(divisors(9)),
+        self.assertEqual(set([1, 3, 9]), set(factors_of(9)),
                 'Divisors are calculated incorrectly')
 
 class TriangleTestCase(unittest.TestCase):
