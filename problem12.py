@@ -24,18 +24,38 @@ import unittest
 
 from math import sqrt
 
-def divisors(number):
+def factors_of(number):
     result = []
-    for i in range(1, number + 1):
+    sqrt_of_number = int(sqrt(number))
+    for i in range(1, sqrt_of_number):
         if number % i == 0:
-            result += [i]
+            result += [i, number / i]
+    if number % sqrt_of_number == 0:
+        result += [sqrt_of_number]
     return result
 
+def triangle(number):
+    return number * (number + 1) / 2
 
-class SolutionTestCase(unittest.TestCase):
+def answer(max_divisors):
+    number = 1
+    while len(factors_of(triangle(number))) < max_divisors:
+        number += 1
+    return triangle(number)
+
+class DivisorsTestCase(unittest.TestCase):
     def runTest(self):
-        self.assertEqual([1, 2, 4, 7, 14, 28], divisors(28), 'Divisors are calculated incorrectly')
+        self.assertEqual(set([1, 2, 4, 7, 14, 28]), set(factors_of(28)),
+                'Divisors are calculated incorrectly')
+        self.assertEqual(set([1, 3, 9]), set(factors_of(9)),
+                'Divisors are calculated incorrectly')
+
+class TriangleTestCase(unittest.TestCase):
+    def runTest(self):
+        self.assertEqual(28, triangle(7),
+                'Triangle number calculated incorrectly')
 
 if __name__ == '__main__':
-    unittest.main()
+    #unittest.main()
+    print(answer(500))
 
