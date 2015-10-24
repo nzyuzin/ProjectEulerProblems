@@ -29,9 +29,10 @@
  * (up, down, left, right, or diagonally) in the 20×20 grid?
  *)
 
-(* This program can be compiled with: 
+(*
+ * This program can be compiled with:
  * ocamlfind ocamlc -package extlib -package str -linkpkg problem11.ml
- * *)
+ *)
 
 open Std
 open Str
@@ -51,13 +52,13 @@ let greatest_product (rows: int list list): int =
   let product_horz (x, idx) =
     if idx < 3 then
       0
-  else
-    let row = List.nth rows x in
-    let fourth = List.nth row (idx - 3) in
-    let third = List.nth row (idx - 2) in
-    let second = List.nth row (idx - 1) in
-    let first = List.nth row idx in
-    first * second * third * fourth in
+    else
+      let row = List.nth rows x in
+      let fourth = List.nth row (idx - 3) in
+      let third = List.nth row (idx - 2) in
+      let second = List.nth row (idx - 1) in
+      let first = List.nth row idx in
+      first * second * third * fourth in
 
   let product_vert (x, y) =
     if x > List.length rows - 4 then
